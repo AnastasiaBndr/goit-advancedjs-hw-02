@@ -19,7 +19,8 @@
 
 body {
   display: flex;
-  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   min-width: 100vw;
   min-height: 100vh;
   margin: 0;
@@ -43,8 +44,8 @@ textarea {
 
 .navigation-link{
   display: block;
-  font-size: 24px;
-  padding-bottom: 12px;
+  font-size: 16px;
+  margin-bottom: 12px;
 }
 
 .navigation-link:hover, .navigation-link:focus{
@@ -63,4 +64,32 @@ textarea {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+
+button {
+  box-sizing: border-box;
+  background-color: var(--button-color);
+  border: none;
+  height: 40px;
+  width: 95px;
+  font-size: 16px;
+  font-weight: 500;
+
+  padding: 8px 16px;
+  border-radius: 8px;
+  color: #fff;
+  letter-spacing: 0.04rem;
+
+}
+
+button:hover,
+button:focus {
+  border: none;
+  background-color: var(--button-hover-color);
+  transition: background-color 0.25s;
+}
+
+button:disabled {
+  background-color: var(--button-disabled);
 }
