@@ -3,8 +3,7 @@ import "izitoast/dist/css/iziToast.min.css";
 
 const delay = document.querySelector("input[name='delay']");
 const form = document.querySelector("form");
-const checkboxFulfilled = document.querySelectorAll("input[type='radio']")[0];
-const checkboxRejected = document.querySelectorAll("input[type='radio']")[1];
+const [checkboxFulfilled, checkboxRejected] = document.querySelectorAll("input[type='radio']");
 
 const makePromise = (value, timeout) => {
     return new Promise((resolve, reject) => {
