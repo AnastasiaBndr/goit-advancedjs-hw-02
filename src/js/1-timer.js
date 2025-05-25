@@ -6,10 +6,10 @@ import convertMs from "./convertMs";
 
 const startButton = document.querySelector("[data-start]");
 startButton.disabled = true;
-const timerDays = document.querySelector("[data-days");
-const timerHours = document.querySelector("[data-hours");
-const timerMinutes = document.querySelector("[data-minutes");
-const timerSeconds = document.querySelector("[data-seconds");
+const timerDays = document.querySelector("[data-days]");
+const timerHours = document.querySelector("[data-hours]");
+const timerMinutes = document.querySelector("[data-minutes]");
+const timerSeconds = document.querySelector("[data-seconds]");
 const input = document.querySelector('#datetime-picker');
 
 let userSelectedDate = null;

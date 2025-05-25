@@ -2,8 +2,9 @@ import iziToast from "izitoast";
 import "izitoast/dist/css/iziToast.min.css";
 
 const delay = document.querySelector("input[name='delay']");
-const form=document.querySelector("form")
-const checkbox = document.querySelector('fieldset');
+const form = document.querySelector("form");
+const checkboxFulfilled = document.querySelectorAll("input[type='radio']")[0];
+const checkboxRejected = document.querySelectorAll("input[type='radio']")[1];
 
 const makePromise = (value, timeout) => {
     return new Promise((resolve, reject) => {
@@ -21,10 +22,14 @@ let promiseValue = null;
 const onSubmit = e => {
     e.preventDefault();
 
-    makePromise(promiseValue, delay.value)
+    const delayValue = parseInt(delay.value);
+
+    promiseValue = checkboxFulfilled.checked ? checkboxFulfilled.value : checkboxRejected.value;
+
+    makePromise(promiseValue, delayValue)
         .then(() => {
             iziToast.success({
-				message: `Fulfilled promise in ${delay.value}ms`,
+				message: `Fulfilled promise in ${delayValue}ms`,
 				closeOnClick: true,
 				position: "topRight",
 				displayMode: 0,
@@ -33,7 +38,7 @@ const onSubmit = e => {
         })
         .catch(() => {
             iziToast.error({
-				message: `Rejected promise in ${delay.value}ms`,
+				message: `Rejected promise in ${delayValue}ms`,
 				closeOnClick: true,
 				position: "topRight",
 				displayMode: 0,
@@ -41,11 +46,4 @@ const onSubmit = e => {
 			});});
 }
 
-const onCheckbox = e => {
-    if (e.target.tagName === 'INPUT') {
-        promiseValue = e.target.value.toLowerCase();
-    };
-}
-
 form.addEventListener('submit', onSubmit);
-checkbox.addEventListener('click', onCheckbox);
